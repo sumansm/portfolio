@@ -1,3 +1,20 @@
+// ==================== Theme Toggle ====================
+const themeToggle = document.getElementById('themeToggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or default to 'dark'
+const currentTheme = localStorage.getItem('theme') || 'dark';
+htmlElement.setAttribute('data-theme', currentTheme);
+
+// Toggle theme
+themeToggle.addEventListener('click', () => {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
 // ==================== Navigation ====================
 const navbar = document.querySelector('.navbar');
 const navToggle = document.querySelector('.nav-toggle');
@@ -312,6 +329,10 @@ preloaderStyle.textContent = `
         justify-content: center;
         z-index: 9999;
         transition: opacity 0.5s ease;
+    }
+
+    [data-theme="light"] .preloader {
+        background: #f5f5f7;
     }
 
     .preloader-spinner {
