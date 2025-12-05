@@ -1,101 +1,47 @@
-// ==================== Navigation ====================
-const navbar = document.querySelector('.navbar');
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+// ===================================
+// MODERN PORTFOLIO - INTERACTIVE FEATURES
+// ===================================
 
-// ==================== Profile to Coding Animation ====================
-const profileImage = document.getElementById('profileImage');
-const codingAnimation = document.getElementById('codingAnimation');
-const heroSection = document.getElementById('home');
-let animationTriggered = false;
-
-// Navbar scroll effect and Profile Animation Toggle
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-
-    // Toggle between profile image and coding animation
-    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-    if (scrollPosition > heroBottom) {
-        // Scrolled past home section - show coding animation
-        profileImage.classList.add('hidden');
-        codingAnimation.classList.add('active');
-        if (!animationTriggered) {
-            animationTriggered = true;
-            restartCodingAnimation();
-        }
-    } else {
-        // In home section - show profile image
-        profileImage.classList.remove('hidden');
-        codingAnimation.classList.remove('active');
-        animationTriggered = false;
-    }
-});
-
-// Mobile menu toggle
-navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu on link click
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
-
-// ==================== Active Navigation Link ====================
+// ==================== NAVIGATION ====================
+const navItems = document.querySelectorAll('.nav-item');
 const sections = document.querySelectorAll('section[id]');
 
-function setActiveNav() {
+// Active navigation on scroll
+function updateActiveNav() {
     const scrollY = window.pageYOffset;
 
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
+        const sectionTop = section.offsetTop - 200;
         const sectionId = section.getAttribute('id');
-        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+        const navLink = document.querySelector(`.nav-item[href="#${sectionId}"]`);
 
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navItems.forEach(item => item.classList.remove('active'));
             navLink?.classList.add('active');
-        } else {
-            navLink?.classList.remove('active');
         }
     });
 }
 
-window.addEventListener('scroll', setActiveNav);
+window.addEventListener('scroll', updateActiveNav);
 
-// ==================== Smooth Scroll ====================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Smooth scroll on nav click
+navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = this.getAttribute('href');
-
-        if (targetId === '#') return;
-
+        const targetId = item.getAttribute('href');
         const targetSection = document.querySelector(targetId);
 
         if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80;
-
             window.scrollTo({
-                top: offsetTop,
+                top: targetSection.offsetTop - 100,
                 behavior: 'smooth'
             });
         }
     });
 });
 
-// ==================== Scroll Animations (AOS) ====================
+// ==================== SCROLL ANIMATIONS ====================
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -104,17 +50,21 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('aos-animate');
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
     });
 }, observerOptions);
 
-// Observe all elements with data-aos attribute
-document.querySelectorAll('[data-aos]').forEach(element => {
-    observer.observe(element);
+// Observe elements for animation
+document.querySelectorAll('.bento-item, .timeline-item, .info-card, .contact-method').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
 });
 
-// ==================== Contact Form ====================
+// ==================== CONTACT FORM ====================
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', (e) => {
@@ -127,140 +77,48 @@ contactForm.addEventListener('submit', (e) => {
         message: document.getElementById('message').value
     };
 
-    // Here you would typically send the form data to a server
     console.log('Form submitted:', formData);
 
-    // Show success message (you can customize this)
-    alert('Thank you for your message! I will get back to you soon.');
+    // Show success message
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
 
-    // Reset form
-    contactForm.reset();
+    submitButton.innerHTML = '<span>Message Sent!</span>';
+    submitButton.style.background = 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)';
+
+    setTimeout(() => {
+        submitButton.innerHTML = originalText;
+        submitButton.style.background = '';
+        contactForm.reset();
+    }, 3000);
 });
 
-// ==================== Typing Effect for Hero Title ====================
-const heroTitle = document.querySelector('.hero-title');
-const titleText = heroTitle.textContent;
-let charIndex = 0;
-
-function typeWriter() {
-    if (charIndex < titleText.length) {
-        heroTitle.textContent = titleText.substring(0, charIndex + 1);
-        charIndex++;
-        setTimeout(typeWriter, 100);
-    }
-}
-
-// Start typing effect when page loads
-window.addEventListener('load', () => {
-    heroTitle.textContent = '';
-    setTimeout(typeWriter, 500);
-});
-
-// ==================== Parallax Effect ====================
+// ==================== FLOATING CARDS PARALLAX ====================
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-image, .profile-wrapper');
+    const cards = document.querySelectorAll('.floating-card');
 
-    parallaxElements.forEach(element => {
-        const speed = 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
+    cards.forEach((card, index) => {
+        const speed = 0.05 * (index + 1);
+        card.style.transform = `translateY(${scrolled * speed}px)`;
     });
 });
 
-// ==================== Tag Hover Effect ====================
-const tags = document.querySelectorAll('.tag, .skill-tag');
+// ==================== TECH ITEMS HOVER EFFECT ====================
+const techItems = document.querySelectorAll('.tech-item');
 
-tags.forEach(tag => {
-    tag.addEventListener('mouseenter', function() {
-        this.style.background = 'linear-gradient(135deg, #00d4ff 0%, #0066ff 100%)';
-        this.style.color = 'white';
-        this.style.borderColor = 'transparent';
-        this.style.transform = 'translateY(-2px) scale(1.02)';
+techItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-4px) scale(1.05)';
     });
 
-    tag.addEventListener('mouseleave', function() {
-        this.style.background = '';
-        this.style.color = '';
-        this.style.borderColor = '';
+    item.addEventListener('mouseleave', function() {
         this.style.transform = '';
     });
 });
 
-// ==================== Cursor Follow Effect (Optional) ====================
-const cursor = document.createElement('div');
-cursor.classList.add('custom-cursor');
-document.body.appendChild(cursor);
-
-let mouseX = 0;
-let mouseY = 0;
-let cursorX = 0;
-let cursorY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-function animateCursor() {
-    cursorX += (mouseX - cursorX) * 0.1;
-    cursorY += (mouseY - cursorY) * 0.1;
-
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-
-    requestAnimationFrame(animateCursor);
-}
-
-animateCursor();
-
-// Add cursor styles dynamically
-const cursorStyle = document.createElement('style');
-cursorStyle.textContent = `
-    .custom-cursor {
-        width: 20px;
-        height: 20px;
-        border: 2px solid #00d4ff;
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.2s ease;
-        display: none;
-    }
-
-    @media (min-width: 1024px) {
-        .custom-cursor {
-            display: block;
-        }
-
-        * {
-            cursor: none !important;
-        }
-    }
-
-    .custom-cursor.expand {
-        transform: scale(1.5);
-        background: rgba(0, 212, 255, 0.1);
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-    }
-`;
-document.head.appendChild(cursorStyle);
-
-// Expand cursor on hover over interactive elements
-const interactiveElements = document.querySelectorAll('a, button, .btn, .project-card, .skill-category, .stat-card');
-
-interactiveElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        cursor.classList.add('expand');
-    });
-
-    element.addEventListener('mouseleave', () => {
-        cursor.classList.remove('expand');
-    });
-});
-
-// ==================== Project Card Tilt Effect ====================
-const projectCards = document.querySelectorAll('.project-card, .skill-category, .stat-card');
+// ==================== PROJECT CARDS TILT EFFECT ====================
+const projectCards = document.querySelectorAll('.bento-item');
 
 projectCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -271,10 +129,10 @@ projectCards.forEach(card => {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
     });
 
     card.addEventListener('mouseleave', () => {
@@ -282,14 +140,33 @@ projectCards.forEach(card => {
     });
 });
 
-// ==================== Stats Counter Animation ====================
+// ==================== SMOOTH SCROLL FOR ALL LINKS ====================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+
+        if (targetId === '#') return;
+
+        const targetSection = document.querySelector(targetId);
+
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ==================== HERO STATS COUNTER ====================
 function animateCounter(element, target, duration = 2000) {
-    let current = 0;
+    const start = 0;
     const increment = target / (duration / 16);
+    let current = start;
 
     const counter = setInterval(() => {
         current += increment;
-
         if (current >= target) {
             element.textContent = target + '+';
             clearInterval(counter);
@@ -300,137 +177,82 @@ function animateCounter(element, target, duration = 2000) {
 }
 
 // Trigger counter animation when stats come into view
-const statNumbers = document.querySelectorAll('.stat-number');
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
             entry.target.classList.add('counted');
-            const targetValue = parseInt(entry.target.textContent);
-            entry.target.textContent = '0+';
-            animateCounter(entry.target, targetValue);
+            const statValue = entry.target.querySelector('.stat-value');
+            const targetValue = parseInt(statValue.textContent);
+            statValue.textContent = '0+';
+            animateCounter(statValue, targetValue);
         }
     });
 }, { threshold: 0.5 });
 
-statNumbers.forEach(stat => {
+document.querySelectorAll('.stat').forEach(stat => {
     statsObserver.observe(stat);
 });
 
-// ==================== Preloader (Optional) ====================
+// ==================== PAGE LOAD ANIMATION ====================
 window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
-    }
+    document.body.style.opacity = '0';
+
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.6s ease';
+        document.body.style.opacity = '1';
+    }, 100);
 });
 
-// Add preloader HTML and CSS dynamically
-const preloaderHTML = `
-    <div class="preloader">
-        <div class="preloader-spinner"></div>
-    </div>
-`;
-
-const preloaderStyle = document.createElement('style');
-preloaderStyle.textContent = `
-    .preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #000000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease;
-    }
-
-    .preloader-spinner {
-        width: 50px;
-        height: 50px;
-        border: 3px solid rgba(0, 212, 255, 0.2);
-        border-top-color: #00d4ff;
-        border-radius: 50%;
-        animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-    }
-
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-`;
-
-document.head.appendChild(preloaderStyle);
-document.body.insertAdjacentHTML('afterbegin', preloaderHTML);
-
-// ==================== Form Input Animation ====================
-const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
-
-formInputs.forEach(input => {
-    input.addEventListener('focus', function() {
-        this.parentElement.classList.add('focused');
-    });
-
-    input.addEventListener('blur', function() {
-        if (this.value === '') {
-            this.parentElement.classList.remove('focused');
-        }
-    });
+// ==================== PREVENT ANIMATION ON RESIZE ====================
+let resizeTimer;
+window.addEventListener('resize', () => {
+    document.body.classList.add('resize-animation-stopper');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        document.body.classList.remove('resize-animation-stopper');
+    }, 400);
 });
 
-// ==================== Scroll Progress Indicator ====================
-const progressBar = document.createElement('div');
-progressBar.classList.add('scroll-progress');
-document.body.appendChild(progressBar);
-
-const progressStyle = document.createElement('style');
-progressStyle.textContent = `
-    .scroll-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #00d4ff 0%, #0066ff 100%);
-        z-index: 9999;
-        transition: width 0.1s ease;
-        box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+// Add CSS to prevent animations during resize
+const style = document.createElement('style');
+style.textContent = `
+    .resize-animation-stopper * {
+        animation: none !important;
+        transition: none !important;
     }
 `;
-document.head.appendChild(progressStyle);
+document.head.appendChild(style);
 
-window.addEventListener('scroll', () => {
-    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (window.scrollY / windowHeight) * 100;
-    progressBar.style.width = scrolled + '%';
-});
-
-// ==================== Restart Coding Animation ====================
-function restartCodingAnimation() {
-    const codeLines = document.querySelectorAll('.code-line');
-    codeLines.forEach((line) => {
-        line.style.animation = 'none';
-        setTimeout(() => {
-            line.style.animation = '';
-        }, 10);
-    });
-}
-
-// ==================== Initialize Everything ====================
+// ==================== INITIALIZE ====================
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio initialized successfully!');
 
     // Set first nav link as active on load
-    navLinks[0]?.classList.add('active');
+    navItems[0]?.classList.add('active');
+
+    // Add subtle fade-in to hero content
+    const heroContent = document.querySelector('.hero-content');
+    const heroVisual = document.querySelector('.hero-visual');
+
+    if (heroContent && heroVisual) {
+        heroContent.style.opacity = '0';
+        heroVisual.style.opacity = '0';
+        heroContent.style.transform = 'translateY(30px)';
+        heroVisual.style.transform = 'translateX(30px)';
+
+        setTimeout(() => {
+            heroContent.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            heroVisual.style.transition = 'opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s';
+            heroContent.style.opacity = '1';
+            heroVisual.style.opacity = '1';
+            heroContent.style.transform = 'translateY(0)';
+            heroVisual.style.transform = 'translateX(0)';
+        }, 200);
+    }
 });
 
-// ==================== Performance Optimization ====================
-// Debounce function for scroll events
+// ==================== PERFORMANCE OPTIMIZATION ====================
+// Debounce scroll events
 function debounce(func, wait = 10) {
     let timeout;
     return function executedFunction(...args) {
@@ -443,7 +265,6 @@ function debounce(func, wait = 10) {
     };
 }
 
-// Apply debounce to scroll-heavy functions
-const debouncedSetActiveNav = debounce(setActiveNav, 10);
-window.removeEventListener('scroll', setActiveNav);
-window.addEventListener('scroll', debouncedSetActiveNav);
+const debouncedUpdateNav = debounce(updateActiveNav, 10);
+window.removeEventListener('scroll', updateActiveNav);
+window.addEventListener('scroll', debouncedUpdateNav);
