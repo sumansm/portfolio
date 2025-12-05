@@ -2,6 +2,60 @@
 // MODERN PORTFOLIO - INTERACTIVE FEATURES
 // ===================================
 
+// ==================== MOBILE NAVIGATION ====================
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
+const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+
+// Toggle mobile menu
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
+    });
+}
+
+// Close mobile menu when clicking on menu items
+mobileMenuItems.forEach(item => {
+    item.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+        if (!e.target.closest('.mobile-nav')) {
+            mobileMenuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    }
+});
+
+// Update active mobile menu item on scroll
+function updateActiveMobileNav() {
+    const scrollY = window.pageYOffset;
+    const sections = document.querySelectorAll('section[id]');
+
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 200;
+        const sectionId = section.getAttribute('id');
+        const mobileLink = document.querySelector(`.mobile-menu-item[href="#${sectionId}"]`);
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            mobileMenuItems.forEach(item => item.classList.remove('active'));
+            mobileLink?.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveMobileNav);
+
 // ==================== NAVIGATION ====================
 const navItems = document.querySelectorAll('.nav-item');
 const sections = document.querySelectorAll('section[id]');
@@ -93,16 +147,26 @@ contactForm.addEventListener('submit', (e) => {
     }, 3000);
 });
 
-// ==================== FLOATING CARDS PARALLAX ====================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const cards = document.querySelectorAll('.floating-card');
+// ==================== DETECT TOUCH DEVICE ====================
+const isTouchDevice = () => {
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
+};
 
-    cards.forEach((card, index) => {
-        const speed = 0.05 * (index + 1);
-        card.style.transform = `translateY(${scrolled * speed}px)`;
+// ==================== FLOATING CARDS PARALLAX ====================
+// Only enable parallax on non-touch devices
+if (!isTouchDevice()) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const cards = document.querySelectorAll('.floating-card');
+
+        cards.forEach((card, index) => {
+            const speed = 0.05 * (index + 1);
+            card.style.transform = `translateY(${scrolled * speed}px)`;
+        });
     });
-});
+}
 
 // ==================== TECH ITEMS HOVER EFFECT ====================
 const techItems = document.querySelectorAll('.tech-item');
@@ -118,27 +182,30 @@ techItems.forEach(item => {
 });
 
 // ==================== PROJECT CARDS TILT EFFECT ====================
-const projectCards = document.querySelectorAll('.bento-item');
+// Only enable tilt effect on non-touch devices
+if (!isTouchDevice()) {
+    const projectCards = document.querySelectorAll('.bento-item');
 
-projectCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    projectCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
     });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-    });
-});
+}
 
 // ==================== SMOOTH SCROLL FOR ALL LINKS ====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
