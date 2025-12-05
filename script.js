@@ -4,37 +4,12 @@ const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-// ==================== Profile to Coding Animation ====================
-const profileImage = document.getElementById('profileImage');
-const codingAnimation = document.getElementById('codingAnimation');
-const heroSection = document.getElementById('home');
-let animationTriggered = false;
-
-// Navbar scroll effect and Profile Animation Toggle
+// Navbar scroll effect
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
-    }
-
-    // Toggle between profile image and coding animation
-    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-    if (scrollPosition > heroBottom) {
-        // Scrolled past home section - show coding animation
-        profileImage.classList.add('hidden');
-        codingAnimation.classList.add('active');
-        if (!animationTriggered) {
-            animationTriggered = true;
-            restartCodingAnimation();
-        }
-    } else {
-        // In home section - show profile image
-        profileImage.classList.remove('hidden');
-        codingAnimation.classList.remove('active');
-        animationTriggered = false;
     }
 });
 
@@ -157,15 +132,7 @@ window.addEventListener('load', () => {
 });
 
 // ==================== Parallax Effect ====================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-image, .profile-wrapper');
-
-    parallaxElements.forEach(element => {
-        const speed = 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
+// Removed - no parallax effect needed
 
 // ==================== Tag Hover Effect ====================
 const tags = document.querySelectorAll('.tag, .skill-tag');
@@ -405,16 +372,8 @@ window.addEventListener('scroll', () => {
     progressBar.style.width = scrolled + '%';
 });
 
-// ==================== Restart Coding Animation ====================
-function restartCodingAnimation() {
-    const codeLines = document.querySelectorAll('.code-line');
-    codeLines.forEach((line) => {
-        line.style.animation = 'none';
-        setTimeout(() => {
-            line.style.animation = '';
-        }, 10);
-    });
-}
+// ==================== Removed Coding Animation Scroll Effect ====================
+// Profile image now stays static without scroll-based transitions
 
 // ==================== Initialize Everything ====================
 document.addEventListener('DOMContentLoaded', () => {

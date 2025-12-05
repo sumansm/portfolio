@@ -370,36 +370,9 @@ body::before {
     transform: scale(1.02);
 }
 
-/* Coding Animation */
+/* Coding Animation - Hidden by default */
 .coding-animation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--glass-bg);
-    border: 3px solid var(--glass-border);
-    border-radius: 50%;
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-    z-index: 2;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-.coding-animation.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.coding-animation.active:hover {
-    border-color: var(--accent-blue);
-    box-shadow: 0 8px 40px rgba(102, 126, 234, 0.5);
+    display: none;
 }
 
 .code-lines {
@@ -482,11 +455,7 @@ body::before {
     51%, 100% { opacity: 0; }
 }
 
-.profile-image.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
+/* Profile image always visible */
 
 .glow-effect {
     position: absolute;
