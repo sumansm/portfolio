@@ -172,15 +172,17 @@ const tags = document.querySelectorAll('.tag, .skill-tag');
 
 tags.forEach(tag => {
     tag.addEventListener('mouseenter', function() {
-        this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        this.style.background = 'linear-gradient(135deg, #00d4ff 0%, #0066ff 100%)';
         this.style.color = 'white';
         this.style.borderColor = 'transparent';
+        this.style.transform = 'translateY(-2px) scale(1.02)';
     });
 
     tag.addEventListener('mouseleave', function() {
         this.style.background = '';
         this.style.color = '';
         this.style.borderColor = '';
+        this.style.transform = '';
     });
 });
 
@@ -217,7 +219,7 @@ cursorStyle.textContent = `
     .custom-cursor {
         width: 20px;
         height: 20px;
-        border: 2px solid #667eea;
+        border: 2px solid #00d4ff;
         border-radius: 50%;
         position: fixed;
         pointer-events: none;
@@ -238,7 +240,8 @@ cursorStyle.textContent = `
 
     .custom-cursor.expand {
         transform: scale(1.5);
-        background: rgba(102, 126, 234, 0.1);
+        background: rgba(0, 212, 255, 0.1);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
     }
 `;
 document.head.appendChild(cursorStyle);
@@ -339,7 +342,7 @@ preloaderStyle.textContent = `
         left: 0;
         width: 100%;
         height: 100%;
-        background: #0a0a0f;
+        background: #000000;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -350,10 +353,11 @@ preloaderStyle.textContent = `
     .preloader-spinner {
         width: 50px;
         height: 50px;
-        border: 3px solid rgba(102, 126, 234, 0.3);
-        border-top-color: #667eea;
+        border: 3px solid rgba(0, 212, 255, 0.2);
+        border-top-color: #00d4ff;
         border-radius: 50%;
-        animation: spin 1s linear infinite;
+        animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
     }
 
     @keyframes spin {
@@ -391,10 +395,11 @@ progressStyle.textContent = `
         top: 0;
         left: 0;
         width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        height: 2px;
+        background: linear-gradient(90deg, #00d4ff 0%, #0066ff 100%);
         z-index: 9999;
         transition: width 0.1s ease;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
     }
 `;
 document.head.appendChild(progressStyle);
