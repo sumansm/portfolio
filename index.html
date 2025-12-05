@@ -10,253 +10,297 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <div class="nav-logo">SM</div>
-        <div class="nav-items">
-            <a href="#home" class="nav-item active">
-                <span class="nav-icon">●</span>
-                <span class="nav-text">Home</span>
-            </a>
-            <a href="#about" class="nav-item">
-                <span class="nav-icon">●</span>
-                <span class="nav-text">About</span>
-            </a>
-            <a href="#work" class="nav-item">
-                <span class="nav-icon">●</span>
-                <span class="nav-text">Work</span>
-            </a>
-            <a href="#projects" class="nav-item">
-                <span class="nav-icon">●</span>
-                <span class="nav-text">Projects</span>
-            </a>
-            <a href="#contact" class="nav-item">
-                <span class="nav-icon">●</span>
-                <span class="nav-text">Contact</span>
-            </a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo-text">SM</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav">
-        <div class="mobile-nav-header">
-            <div class="mobile-nav-logo">SM</div>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-        <div class="mobile-menu">
-            <a href="#home" class="mobile-menu-item">Home</a>
-            <a href="#about" class="mobile-menu-item">About</a>
-            <a href="#work" class="mobile-menu-item">Work</a>
-            <a href="#projects" class="mobile-menu-item">Projects</a>
-            <a href="#contact" class="mobile-menu-item">Contact</a>
-        </div>
-    </div>
-
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="hero-grid">
+        <div class="container">
             <div class="hero-content">
-                <div class="hero-label">Developer & DevOps Engineer</div>
-                <h1 class="hero-heading">
-                    Building <span class="gradient-text">scalable</span> infrastructure &
-                    <span class="gradient-text">elegant</span> solutions
-                </h1>
-                <p class="hero-description">
-                    I'm Suman Mondal, a full-stack developer and DevOps engineer crafting
-                    robust systems at Convesio & Triophase. Passionate about automation,
-                    cloud architecture, and clean code.
-                </p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-value">3+</div>
-                        <div class="stat-label">Years Exp.</div>
+                <div class="hero-text" data-aos="fade-up">
+                    <div class="greeting">
+                        <span class="wave">👋</span> Hello, I'm
                     </div>
-                    <div class="stat">
-                        <div class="stat-value">20+</div>
-                        <div class="stat-label">Projects</div>
+                    <h1 class="hero-title">Suman Mondal</h1>
+                    <h2 class="hero-subtitle">Developer & DevOps Engineer at Convesio & Triophase</h2>
+                    <div class="keyword-tags">
+                        <span class="tag">DevOps</span>
+                        <span class="tag">Full Stack</span>
+                        <span class="tag">Networking</span>
+                        <span class="tag">CI/CD</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Terraform</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Microservices</span>
                     </div>
-                    <div class="stat">
-                        <div class="stat-value">2</div>
-                        <div class="stat-label">Companies</div>
+                    <p class="hero-description">
+                        Passionate full-stack and DevOps engineer building scalable systems and automation-driven solutions.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">Hire Me</a>
+                        <a href="#" class="btn btn-secondary">Download Resume</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/sumansm" class="social-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/suman-mondal-95a827216/" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:sumansmr428@gmail.com" class="social-icon" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </a>
                     </div>
                 </div>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">
-                        <span>Let's Talk</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M1 8h14M8 1l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <a href="#projects" class="btn btn-secondary">
-                        <span>View Work</span>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-card card-1">
-                    <div class="card-icon">☁️</div>
-                    <div class="card-text">Cloud Infrastructure</div>
-                </div>
-                <div class="floating-card card-2">
-                    <div class="card-icon">🐳</div>
-                    <div class="card-text">Docker & K8s</div>
-                </div>
-                <div class="floating-card card-3">
-                    <div class="card-icon">⚡</div>
-                    <div class="card-text">CI/CD Automation</div>
-                </div>
-                <div class="floating-card card-4">
-                    <div class="card-icon">💻</div>
-                    <div class="card-text">Full Stack Dev</div>
-                </div>
-                <div class="hero-image-wrapper">
-                    <img src="profile.png" alt="Suman Mondal" class="hero-image">
-                    <div class="status-badge">
-                        <span class="status-dot"></span>
-                        Available for work
+                <div class="hero-image" data-aos="fade-left">
+                    <div class="profile-wrapper" id="profileWrapper">
+                        <img src="profile.png" alt="Suman Mondal - Developer & DevOps Engineer" class="profile-image" id="profileImage">
+                        <div class="coding-animation" id="codingAnimation">
+                            <div class="code-lines">
+                                <div class="code-line"><span class="keyword">const</span> <span class="variable">dev</span> = {</div>
+                                <div class="code-line">  <span class="property">name</span>: <span class="string">'Suman'</span>,</div>
+                                <div class="code-line">  <span class="property">role</span>: <span class="string">'DevOps'</span>,</div>
+                                <div class="code-line">  <span class="property">tech</span>: <span class="string">'Docker'</span>,</div>
+                                <div class="code-line">  <span class="property">cloud</span>: <span class="string">'AWS'</span></div>
+                                <div class="code-line">};</div>
+                                <div class="code-line"></div>
+                                <div class="code-line"><span class="keyword">function</span> <span class="function">deploy</span>() {</div>
+                                <div class="code-line">  <span class="keyword">return</span> <span class="string">'🚀 Live!'</span>;</div>
+                                <div class="code-line">}<div class="terminal-cursor"></div></div>
+                            </div>
+                        </div>
+                        <div class="glow-effect"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <div class="scroll-line"></div>
+            <span></span>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <div class="section-label">About Me</div>
-            <div class="about-grid">
-                <div class="about-main">
-                    <h2 class="section-heading">Developer & DevOps engineer building the future of web infrastructure</h2>
-                    <div class="about-text">
-                        <p>Currently working remotely at <strong>Convesio</strong> and <strong>Triophase Global Solutions</strong>,
-                        I specialize in creating scalable infrastructure, optimizing deployment pipelines, and building
-                        full-stack applications that make a difference.</p>
-
-                        <p>My expertise spans across cloud platforms (AWS), containerization (Docker, Kubernetes),
-                        infrastructure as code (Terraform), and modern web technologies (Node.js, PHP, Laravel, Java).</p>
-
-                        <p>I believe in writing clean, maintainable code and building systems that are both robust
-                        and elegant. When I'm not coding, I'm exploring new technologies and contributing to the
-                        developer community.</p>
-                    </div>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know more about my background and expertise</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <p class="about-description">
+                        Passionate software developer currently working at <strong>Convesio</strong> (remote) and <strong>Triophase Global Solutions</strong>.
+                        I specialize in DevOps, full-stack development, infrastructure automation, and backend engineering.
+                    </p>
+                    <p class="about-description">
+                        Experienced with JavaScript, jQuery, HTML, CSS, PHP, MySQL, Java (OOP), APIs, Docker, Git,
+                        Laravel, Linux, virtualization, and cloud technologies.
+                    </p>
+                    <p class="about-description">
+                        I enjoy solving complex problems, optimizing systems, and building clean, scalable architecture.
+                    </p>
                 </div>
-                <div class="about-sidebar">
-                    <div class="info-card">
-                        <div class="info-card-header">
-                            <h3>Tech Stack</h3>
-                        </div>
-                        <div class="tech-grid">
-                            <div class="tech-item">Docker</div>
-                            <div class="tech-item">AWS</div>
-                            <div class="tech-item">Node.js</div>
-                            <div class="tech-item">PHP</div>
-                            <div class="tech-item">Laravel</div>
-                            <div class="tech-item">Java</div>
-                            <div class="tech-item">MySQL</div>
-                            <div class="tech-item">Linux</div>
-                            <div class="tech-item">Kubernetes</div>
-                            <div class="tech-item">Terraform</div>
-                            <div class="tech-item">CI/CD</div>
-                            <div class="tech-item">Git</div>
-                        </div>
+                <div class="about-stats" data-aos="fade-left">
+                    <div class="stat-card">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
-                    <div class="info-card">
-                        <div class="info-card-header">
-                            <h3>Education</h3>
-                        </div>
-                        <div class="education-list">
-                            <div class="education-item">
-                                <div class="education-degree">B.Tech Computer Science</div>
-                                <div class="education-school">Purulia Govt. Engineering College</div>
-                                <div class="education-year">2019 - 2022 • Grade 8.89</div>
-                            </div>
-                            <div class="education-item">
-                                <div class="education-degree">Diploma Computer Science</div>
-                                <div class="education-school">KG Engineering Institute</div>
-                                <div class="education-year">2016 - 2019 • Grade 7.8</div>
-                            </div>
-                        </div>
+                    <div class="stat-card">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-label">DevOps + Full-Stack</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Experience Section -->
-    <section id="work" class="work-section">
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
         <div class="container">
-            <div class="section-label">Work Experience</div>
-            <h2 class="section-heading">Building products at leading companies</h2>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Developer & DevOps Engineer</h3>
-                                <div class="timeline-company">Convesio</div>
-                                <div class="timeline-location">San Francisco, CA • Remote</div>
-                            </div>
-                            <div class="timeline-period">
-                                <span class="period-badge current">Current</span>
-                                <span class="period-text">Aug 2022 - Present</span>
-                            </div>
-                        </div>
-                        <ul class="timeline-highlights">
-                            <li>Architected and deployed microservices infrastructure serving 10K+ requests/minute</li>
-                            <li>Reduced deployment time by 60% through CI/CD pipeline optimization</li>
-                            <li>Built internal automation tools that saved 20 hours/week of manual work</li>
-                            <li>Implemented monitoring and alerting systems for 99.9% uptime</li>
-                        </ul>
-                        <div class="timeline-skills">
-                            <span>Docker</span>
-                            <span>AWS</span>
-                            <span>Node.js</span>
-                            <span>PHP</span>
-                            <span>CI/CD</span>
-                        </div>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <p class="section-subtitle">Technologies and tools I work with</p>
+            </div>
+            <div class="skills-grid">
+                <!-- DevOps & Cloud -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-icon">☁️</div>
+                    <h3 class="category-title">DevOps & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Cloud Computing</span>
+                        <span class="skill-tag">Rancher Kubernetes</span>
+                        <span class="skill-tag">Nomad</span>
+                        <span class="skill-tag">Consul</span>
+                        <span class="skill-tag">VLAN</span>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Software Developer & DevOps Engineer</h3>
-                                <div class="timeline-company">Triophase Global Solutions</div>
-                            </div>
-                            <div class="timeline-period">
-                                <span class="period-badge current">Current</span>
-                                <span class="period-text">Ongoing</span>
-                            </div>
-                        </div>
-                        <ul class="timeline-highlights">
-                            <li>Developed full-stack applications using Laravel, Node.js, and modern JavaScript</li>
-                            <li>Managed cloud infrastructure and optimized resource utilization</li>
-                            <li>Collaborated with cross-functional teams on multiple projects</li>
-                            <li>Implemented security best practices and automated testing workflows</li>
-                        </ul>
-                        <div class="timeline-skills">
-                            <span>Laravel</span>
-                            <span>JavaScript</span>
-                            <span>MySQL</span>
-                            <span>Linux</span>
-                            <span>Git</span>
-                        </div>
+                <!-- Backend & Full Stack -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-icon">⚙️</div>
+                    <h3 class="category-title">Backend & Full Stack</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Databases</span>
+                        <span class="skill-tag">JSON</span>
                     </div>
+                </div>
+
+                <!-- Frontend -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-icon">🎨</div>
+                    <h3 class="category-title">Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">jQuery</span>
+                        <span class="skill-tag">AJAX</span>
+                        <span class="skill-tag">Web Development</span>
+                    </div>
+                </div>
+
+                <!-- Tools & Methodologies -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                    <div class="category-icon">🛠️</div>
+                    <h3 class="category-title">Tools & Methodologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">GitLab</span>
+                        <span class="skill-tag">SSH</span>
+                        <span class="skill-tag">SFTP</span>
+                        <span class="skill-tag">RDP</span>
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">My academic background</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2019 – 2022</div>
+                        <h3 class="timeline-title">Bachelor of Technology (B.Tech)</h3>
+                        <h4 class="timeline-subtitle">Computer Science</h4>
+                        <p class="timeline-institution">Purulia Government Engineering College</p>
+                        <div class="timeline-grade">Grade: 8.89</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2016 – 2019</div>
+                        <h3 class="timeline-title">Diploma</h3>
+                        <h4 class="timeline-subtitle">Computer Science</h4>
+                        <p class="timeline-institution">KG Engineering Institute (Govt)</p>
+                        <div class="timeline-grade">Grade: 7.8 DPGA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">My professional journey</p>
+            </div>
+            <div class="experience-content" data-aos="fade-up" data-aos-delay="100">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Developer & DevOps Engineer</h3>
+                            <h4 class="experience-company">Convesio</h4>
+                            <p class="experience-location">San Francisco, California, United States · Remote</p>
+                        </div>
+                        <div class="experience-period">Aug 2022 - Present</div>
+                    </div>
+                    <div class="experience-duration">3 yrs 5 mos · Full-time</div>
+                    <ul class="experience-highlights">
+                        <li>Building backend services & internal automation tools</li>
+                        <li>Working with Docker, CI/CD pipelines, Linux servers</li>
+                        <li>Developing full-stack apps using PHP, Node.js, JavaScript</li>
+                        <li>Infrastructure optimization, API development, system monitoring</li>
+                    </ul>
+                </div>
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Software Developer & DevOps Engineer</h3>
+                            <h4 class="experience-company">Triophase Global Solutions</h4>
+                        </div>
+                        <div class="experience-period">Current</div>
+                    </div>
+                    <ul class="experience-highlights">
+                        <li>Building backend services & internal automation tools</li>
+                        <li>Working with Docker, CI/CD pipelines, Linux servers</li>
+                        <li>Developing full-stack apps using PHP, Node.js, JavaScript</li>
+                        <li>Infrastructure optimization, API development, system monitoring</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -265,118 +309,159 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
         <div class="container">
-            <div class="section-label">Selected Work</div>
-            <h2 class="section-heading">Projects & Case Studies</h2>
-
-            <div class="bento-grid">
-                <!-- Large Featured Project -->
-                <div class="bento-item large">
-                    <div class="project-image-large">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Some of my recent work</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
                         <div class="project-placeholder">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">DevOps Automation Tool</h3>
+                        <p class="project-description">
+                            Automated deployment and monitoring system for microservices architecture with CI/CD integration.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">Terraform</span>
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">Shell</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Microservices Deployment</h3>
+                        <p class="project-description">
+                            Scalable microservices architecture with load balancing and container orchestration.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Nginx</span>
+                            <span class="tech-badge">Linux</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Laravel Web Application</h3>
+                        <p class="project-description">
+                            Full-featured web application with authentication, CRUD operations, and RESTful API.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Laravel</span>
+                            <span class="tech-badge">PHP</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Node.js API System</h3>
+                        <p class="project-description">
+                            RESTful API with JWT authentication, rate limiting, and comprehensive documentation.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Express</span>
+                            <span class="tech-badge">MongoDB</span>
+                            <span class="tech-badge">JWT</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                                 <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                                 <line x1="12" y1="22.08" x2="12" y2="12"></line>
                             </svg>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Infrastructure as Code Platform</h3>
-                        <p>Automated infrastructure provisioning system using Terraform and AWS, reducing deployment time from hours to minutes.</p>
-                        <div class="project-tags">
-                            <span>Terraform</span>
-                            <span>AWS</span>
-                            <span>CI/CD</span>
-                            <span>Shell</span>
+                    <div class="project-content">
+                        <h3 class="project-title">Infrastructure as Code</h3>
+                        <p class="project-description">
+                            Automated infrastructure provisioning using Terraform with multi-environment setup.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Terraform</span>
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">CI/CD</span>
+                            <span class="tech-badge">Shell</span>
                         </div>
-                        <a href="#" class="project-link">
-                            View Project
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M1 8h14M8 1l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <line x1="12" y1="20" x2="12" y2="10"></line>
+                                <line x1="18" y1="20" x2="18" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="16"></line>
                             </svg>
-                        </a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Medium Projects -->
-                <div class="bento-item medium">
-                    <div class="project-image">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                        </svg>
-                    </div>
-                    <h3>Microservices Deployment</h3>
-                    <p>Scalable microservices architecture with Docker, Kubernetes, and load balancing.</p>
-                    <div class="project-tags">
-                        <span>Docker</span>
-                        <span>K8s</span>
-                        <span>Nginx</span>
-                    </div>
-                </div>
-
-                <div class="bento-item medium">
-                    <div class="project-image">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <line x1="12" y1="20" x2="12" y2="10"></line>
-                            <line x1="18" y1="20" x2="18" y2="4"></line>
-                            <line x1="6" y1="20" x2="6" y2="16"></line>
-                        </svg>
-                    </div>
-                    <h3>Real-time Monitoring Dashboard</h3>
-                    <p>System monitoring and alerting dashboard with real-time metrics and notifications.</p>
-                    <div class="project-tags">
-                        <span>Node.js</span>
-                        <span>Grafana</span>
-                        <span>Docker</span>
-                    </div>
-                </div>
-
-                <!-- Small Projects -->
-                <div class="bento-item small">
-                    <div class="project-image-small">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
-                    </div>
-                    <h4>API Gateway</h4>
-                    <p>RESTful API with JWT auth and rate limiting.</p>
-                    <div class="project-tags">
-                        <span>Node.js</span>
-                        <span>JWT</span>
-                    </div>
-                </div>
-
-                <div class="bento-item small">
-                    <div class="project-image-small">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Laravel CMS</h4>
-                    <p>Full-featured content management system.</p>
-                    <div class="project-tags">
-                        <span>Laravel</span>
-                        <span>MySQL</span>
-                    </div>
-                </div>
-
-                <div class="bento-item small">
-                    <div class="project-image-small">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
-                    </div>
-                    <h4>DevOps Toolkit</h4>
-                    <p>Collection of automation scripts and tools.</p>
-                    <div class="project-tags">
-                        <span>Shell</span>
-                        <span>Python</span>
+                    <div class="project-content">
+                        <h3 class="project-title">Monitoring Dashboard</h3>
+                        <p class="project-description">
+                            Real-time system monitoring and alerting dashboard for infrastructure health tracking.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">Grafana</span>
+                            <span class="tech-badge">Docker</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
                     </div>
                 </div>
             </div>
@@ -386,78 +471,53 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="contact-grid">
-                <div class="contact-content">
-                    <div class="section-label">Get In Touch</div>
-                    <h2 class="section-heading">Let's build something amazing together</h2>
-                    <p class="contact-description">
-                        I'm always open to discussing new projects, creative ideas, or opportunities
-                        to be part of your vision. Whether you need a full-stack developer, a DevOps
-                        engineer, or someone who can do both – let's talk.
-                    </p>
-                    <div class="contact-methods">
-                        <a href="mailto:sumansmr428@gmail.com" class="contact-method">
-                            <div class="method-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                            </div>
-                            <div class="method-details">
-                                <div class="method-label">Email</div>
-                                <div class="method-value">sumansmr428@gmail.com</div>
-                            </div>
-                        </a>
-                        <a href="https://www.linkedin.com/in/suman-mondal-95a827216/" class="contact-method" target="_blank">
-                            <div class="method-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                </svg>
-                            </div>
-                            <div class="method-details">
-                                <div class="method-label">LinkedIn</div>
-                                <div class="method-value">suman-mondal-95a827216</div>
-                            </div>
-                        </a>
-                        <a href="https://github.com/sumansm" class="contact-method" target="_blank">
-                            <div class="method-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </div>
-                            <div class="method-details">
-                                <div class="method-label">GitHub</div>
-                                <div class="method-value">@sumansm</div>
-                            </div>
-                        </a>
-                    </div>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's discuss your next project</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <a href="mailto:sumansmr428@gmail.com" class="contact-card-link">
+                        <div class="contact-card">
+                            <div class="contact-icon">📧</div>
+                            <h3>Email</h3>
+                            <p>sumansmr428@gmail.com</p>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/suman-mondal-95a827216/" class="contact-card-link" target="_blank" rel="noopener noreferrer">
+                        <div class="contact-card">
+                            <div class="contact-icon">💼</div>
+                            <h3>LinkedIn</h3>
+                            <p>suman-mondal-95a827216</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/sumansm" class="contact-card-link" target="_blank" rel="noopener noreferrer">
+                        <div class="contact-card">
+                            <div class="contact-icon">💻</div>
+                            <h3>GitHub</h3>
+                            <p>@sumansm</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="contact-form-wrapper">
+                <div class="contact-form-wrapper" data-aos="fade-left">
                     <form class="contact-form" id="contactForm">
-                        <div class="form-row">
-                            <div class="form-field">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-field">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                            </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
-                        <div class="form-field">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Project Discussion" required>
+                            <input type="text" id="subject" name="subject" required>
                         </div>
-                        <div class="form-field">
+                        <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span>Send Message</span>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M1 8h14M8 1l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -468,21 +528,13 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-left">
-                    <div class="footer-logo">SM</div>
-                    <p>Developer & DevOps Engineer</p>
-                </div>
+                <p>&copy; 2025 Suman Mondal — Developer & DevOps Engineer</p>
                 <div class="footer-links">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
-                    <a href="#work">Work</a>
                     <a href="#projects">Projects</a>
                     <a href="#contact">Contact</a>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Suman Mondal. All rights reserved.</p>
-                <p>Built with passion and modern web technologies</p>
             </div>
         </div>
     </footer>
