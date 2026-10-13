@@ -44,7 +44,7 @@ A modern, dark-themed developer portfolio showcasing my work as a Developer & De
 
 ## 📄 License
 
-© 2025 Suman Mondal — Developer & DevOps Engineer
+© 2026 Suman Mondal — Developer & DevOps Engineer
 
 ---
 
